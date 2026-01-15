@@ -14,13 +14,50 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #000000;
   }
 }
-
+:root {
+  --background: #FFFFFF;
+  --foreground: #171717;
+}
+/* Custom colors and fonts */
+:root {
+  --primary: #A576FF;
+  --secondary: #DCD5FF;
+  --dark-secondary: #8974eb66;
+  --dark-primary: #8974eb00;
+  --black: #000000;
+  --dark-black: #191919;
+  --light-black: #333333;
+  --white: #FFFFFF;
+  --neutral-50: #FAFAFA;
+  --neutral-light: #E6E6E6;
+ --font-monosansnarrow: "MonaSansNarrow", serif;
+  --font-mononarrowbold: "MonaSansNarrowBold", Impact, serif;
+  --site-header-height: 0px; /* updated by Header component */
+}
+/* @theme inline {
+  --color-primary: #A576FF;
+  --color-secondary: #DCD5FF;
+  --color-dark-secondary: #8974eb66;
+  --color-dark-primary: #8974eb00;
+  --color-black: #000000;
+  --color-dark-black: #191919;
+  --color-light-black: #333333;
+  --color-white: #FFFFFF;
+  --color-neutral-50: #FAFAFA;
+  --color-neutral-light: #E6E6E6;
+  fonts
+  --font-monosansnarrow: "MonaSansNarrow", serif;
+  --font-mononarrowbold: "MonaSansNarrowBold", serif;
+  --font-monosans: "Mona Sans", Arial, sans-serif;
+  --font-monosansregular: "monosansregular", Arial, sans-serif;
+} */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
