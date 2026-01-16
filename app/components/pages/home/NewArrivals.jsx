@@ -103,7 +103,9 @@ const NewArrivals = () => {
         {/* View All Button */}
         <div className="mt-8 md:mt-16 flex justify-center">
           <button className="w-full md:w-[218px] h-[52px] border border-gray-200 rounded-full font-medium text-black hover:bg-black hover:text-white transition-all duration-300 cursor-pointer">
-            View All
+            <a href="/newarrivals" className="block w-full h-full flex items-center justify-center">
+              View All
+            </a>
           </button>
         </div>
       </div>

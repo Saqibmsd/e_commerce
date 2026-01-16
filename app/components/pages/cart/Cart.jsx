@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import { Trash2, Plus, Minus, ArrowRight, Tag } from "lucide-react";
 import { useCart } from "@/app/context/CartContext";
+import DeliveryForm from "@/app/components/common/DeliveryForm";
 
 const CartPage = () => {
   const { cart, removeFromCart, updateQuantity, getTotalPrice } = useCart();
   const [promoCode, setPromoCode] = useState("");
+  const [showDeliveryForm, setShowDeliveryForm] = useState(false);
   const discountPercent = 0.2; // 20% discount
   const deliveryFee = 15;
 
@@ -19,9 +21,9 @@ const CartPage = () => {
     <div className="min-h-screen bg-white pb-20">
       <div className="container mx-auto px-4 lg:px-10 py-6">
         {/* Breadcrumb */}
-        <nav className="text-sm text-black/60 mb-6">
+        {/* <nav className="text-sm text-black/60 mb-6">
           Home &gt; <span className="text-black">Cart</span>
-        </nav>
+        </nav> */}
 
         <h1 className="text-3xl lg:text-4xl font-black mb-8">YOUR CART</h1>
 
@@ -51,7 +53,7 @@ const CartPage = () => {
                       </div>
                       <button 
                         onClick={() => removeFromCart(item.cartItemId)}
-                        className="text-red-500 hover:scale-110 transition-transform"
+                        className="text-red-500 hover:scale-110 transition-transform cursor-pointer"
                       >
                         <Trash2 size={20} />
                       </button>
@@ -62,11 +64,11 @@ const CartPage = () => {
                       
                       {/* Quantity Selector */}
                       <div className="flex items-center gap-4 bg-[#F0F0F0] px-4 py-2 rounded-full">
-                        <button onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)} className="hover:opacity-50">
+                        <button onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)} className="hover:opacity-50 cursor-pointer">
                           <Minus size={18} />
                         </button>
                         <span className="font-medium text-sm lg:text-base">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)} className="hover:opacity-50">
+                        <button onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)} className="hover:opacity-50 cursor-pointer">
                           <Plus size={18} />
                         </button>
                       </div>
@@ -115,15 +117,22 @@ const CartPage = () => {
                   onChange={(e) => setPromoCode(e.target.value)}
                 />
               </div>
-              <button className="bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-black/80 transition-all">
+              <button onClick={() => setShowDeliveryForm(true)} className="bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-black/80 transition-all cursor-pointer">
                 Apply
               </button>
             </div>
 
+            {showDeliveryForm && (
+              <DeliveryForm
+                total={Math.round(total)}
+                onClose={() => setShowDeliveryForm(false)}
+              />
+            )}
+
             {/* Checkout Button */}
-            <button className="w-full bg-black text-white py-4 rounded-full font-medium flex items-center justify-center gap-2 hover:bg-black/80 transition-all">
+            {/* <button className="w-full bg-black text-white py-4 rounded-full font-medium flex items-center justify-center gap-2 hover:bg-black/80 transition-all">
               Go to Checkout <ArrowRight size={20} />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
