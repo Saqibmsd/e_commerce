@@ -9,7 +9,7 @@ const styles = [
 
 const Browse = () => {
   return (
-    <section className="px-4 md:px-10 mb-20">
+    <section className="container mx-auto px-4 lg:px-10">
       {/* Light grey rounded background container */}
       <div className="bg-[#F0F0F0] rounded-[20px] md:rounded-[40px] pt-10 pb-8 md:pt-16 md:pb-20 px-6 md:px-16">
         

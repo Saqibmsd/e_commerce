@@ -50,7 +50,7 @@ export const products = [
     category: "Jeans",
     color: "bg-blue-700",
     size: "Large",
-    style: "Casual",
+    style: "Party",
     image: "/images/casual/SGJens.png",
   },
   {
