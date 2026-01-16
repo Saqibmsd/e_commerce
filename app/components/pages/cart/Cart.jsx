@@ -82,7 +82,7 @@ const CartPage = () => {
           </div>
 
           {/* --- RIGHT: ORDER SUMMARY --- */}
-          <div className="lg:w-[400px] border border-black/10 rounded-[20px] p-6 h-fit space-y-6">
+          <div className={`lg:w-[400px] border border-black/10 rounded-[20px] p-6 h-fit space-y-6 ${cart.length === 0 ? 'filter blur-sm opacity-100 pointer-events-none' : ''}`}>
             <h2 className="text-xl lg:text-2xl font-bold">Order Summary</h2>
             
             <div className="space-y-4">

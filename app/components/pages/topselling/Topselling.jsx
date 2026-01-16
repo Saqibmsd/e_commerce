@@ -22,10 +22,10 @@ export default function TopSellingPage() {
   // mostPopular keeps the default rating sort
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white container mx-auto px-4 lg:px-10 py-6">
       {/* 1. Hero / Header Section */}
       <div className="mb-12">
-        <div className="max-w-[1240px] mx-auto px-4 pt-6 md:pt-8 lg:pt-12">
+        <div className="max-w-[1240px] mx-auto pt-6 md:pt-8 lg:pt-12">
             <div className="inline-flex items-center gap-2 bg-black text-white px-3 md:px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 md:mb-4">
                 <TrendingUp size={12} className="md:w-4 md:h-4" /> Top Rated
             </div>
@@ -36,7 +36,7 @@ export default function TopSellingPage() {
         </div>
       </div>
 
-      <div className="max-w-[1240px] mx-auto px-4">
+      <div className="max-w-[1240px] mx-auto">
         {/* 2. Utility Bar */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10 pb-6 border-b border-black/10">
             <span className="text-sm md:text-base font-medium text-black/60">
