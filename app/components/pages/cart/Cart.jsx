@@ -1,63 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Trash2, Plus, Minus, ArrowRight, Tag } from "lucide-react";
-
-// Mock Data representing items added to cart
-const initialCartItems = [
-  {
-    id: 1,
-    title: "Gradient Graphic T-shirt",
-    size: "Large",
-    color: "White",
-    price: 145,
-    image: "images/casual/GGtshirt.png",
-    quantity: 1,
-  },
-  {
-    id: 2,
-    title: "Checkered Shirt",
-    size: "Medium",
-    color: "Red",
-    price: 180,
-    image: "/images/casual/CheckShirt.png",
-    quantity: 1,
-  },
-  {
-    id: 3,
-    title: "Skinny Fit Jeans",
-    size: "Large",
-    color: "Blue",
-    price: 240,
-    image: "/images/casual/SGJens.png",
-    quantity: 1,
-  },
-];
+import { useCart } from "@/app/context/CartContext";
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState(initialCartItems);
+  const { cart, removeFromCart, updateQuantity, getTotalPrice } = useCart();
   const [promoCode, setPromoCode] = useState("");
-  const [discountPercent, setDiscountPercent] = useState(0.2); // 20% discount
+  const discountPercent = 0.2; // 20% discount
   const deliveryFee = 15;
-
-  // --- LOGIC ---
-
-  const updateQuantity = (id, delta) => {
-  setCartItems((items) =>
-    items.map((item) =>
-      item.id === id
-        ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-        : item
-    )
-  );
-};
-
-const removeItem = (id) => {
-  setCartItems((items) => items.filter((item) => item.id !== id));
-};
 
 
   // Calculations
-  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const discountAmount = subtotal * discountPercent;
   const total = subtotal - discountAmount + deliveryFee;
 
@@ -74,12 +28,12 @@ const removeItem = (id) => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* --- LEFT: ITEMS LIST --- */}
           <div className="flex-1 border border-black/10 rounded-[20px] p-4 lg:p-6 space-y-6">
-            {cartItems.length > 0 ? (
-              cartItems.map((item, index) => (
+            {cart.length > 0 ? (
+              cart.map((item, index) => (
                 <div
-                  key={item.id}
+                  key={item.cartItemId}
                   className={`flex gap-4 pb-6 ${
-                    index !== cartItems.length - 1 ? "border-b border-black/10" : ""
+                    index !== cart.length - 1 ? "border-b border-black/10" : ""
                   }`}
                 >
                   {/* Image */}
@@ -96,7 +50,7 @@ const removeItem = (id) => {
                         <p className="text-sm text-black/60">Color: <span className="text-black/80">{item.color}</span></p>
                       </div>
                       <button 
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => removeFromCart(item.cartItemId)}
                         className="text-red-500 hover:scale-110 transition-transform"
                       >
                         <Trash2 size={20} />
@@ -108,11 +62,11 @@ const removeItem = (id) => {
                       
                       {/* Quantity Selector */}
                       <div className="flex items-center gap-4 bg-[#F0F0F0] px-4 py-2 rounded-full">
-                        <button onClick={() => updateQuantity(item.id, -1)} className="hover:opacity-50">
+                        <button onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)} className="hover:opacity-50">
                           <Minus size={18} />
                         </button>
                         <span className="font-medium text-sm lg:text-base">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.id, 1)} className="hover:opacity-50">
+                        <button onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)} className="hover:opacity-50">
                           <Plus size={18} />
                         </button>
                       </div>

@@ -9,9 +9,12 @@ import {
   CircleUserRound, 
   ChevronDown 
 } from "lucide-react";
+import { useCart } from "@/app/context/CartContext";
+import Link from "next/link";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { newItemsCount, clearNotificationBadge } = useCart();
 
   return (
     <header className="w-full bg-white sticky top-0 z-50">
@@ -60,9 +63,16 @@ const Header = () => {
             <Search size={22} />
           </button>
           
-          <a href="/cart"><button className="text-black hover:opacity-70 cursor-pointer mt-2">
-            <ShoppingCart size={22} />
-          </button></a>
+          <Link href="/cart" onClick={() => clearNotificationBadge()}>
+            <button className="text-black hover:opacity-70 cursor-pointer mt-2 relative">
+              <ShoppingCart size={22} />
+              {newItemsCount > 0 && (
+                <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {newItemsCount}
+                </div>
+              )}
+            </button>
+          </Link>
           
           <button className="text-black hover:opacity-70">
             <CircleUserRound size={22} />

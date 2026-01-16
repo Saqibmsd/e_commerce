@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -7,18 +8,18 @@ const Hero = () => {
         {/* Left Content */}
         <div className="w-full md:w-1/2 pt-10 md:pt-20 pb-10 md:pb-20">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6 tracking-tighter text-black">
-            FIND CLOTHES THAT MATCHES YOUR STYLE 
+            FIND CLOTHES THAT MATCHES YOUR STYLE
           </h1>
           <p className="text-gray-600 text-sm md:text-base mb-8 max-w-[540px]">
             Browse through our diverse range of meticulously crafted garments,
             designed to bring out your individuality and cater to your sense of
             style.
           </p>
-
-          <button className="w-full md:w-52 bg-black text-white py-4 rounded-full font-medium cursor-pointer hover:bg-black/80 transition-all mb-10 md:mb-12">
-            <a href="">Shop Now</a>
-          </button>
-
+          <Link href="/casual">
+            <button className="w-full md:w-52 bg-black text-white py-4 rounded-full font-medium cursor-pointer hover:bg-black/80 transition-all mb-10 md:mb-12">
+              Shop Now
+            </button>
+          </Link>
           {/* Stats */}
           <div className="flex flex-wrap justify-center md:justify-start gap-8 md:gap-12">
             <div>

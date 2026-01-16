@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Star, StarHalf, Plus, Minus, Check, Settings2, ChevronDown } from 'lucide-react';
+import { useCart } from '@/app/context/CartContext';
 
 // 1. CHANGED: Catch 'product' (singular) to match your page.jsx
 const Tshirt = ({ product }) => {
@@ -8,6 +9,7 @@ const Tshirt = ({ product }) => {
   const [selectedSize, setSelectedSize] = useState('Large');
   const [selectedColor, setSelectedColor] = useState('olive');
   const [quantity, setQuantity] = useState(1);
+  const { addToCart, notification } = useCart();
 
   // 2. SAFETY CHECK: If product data hasn't arrived, show a message
   if (!product) return <div className="p-20 text-center">Loading Product...</div>;
@@ -30,9 +32,9 @@ const Tshirt = ({ product }) => {
   return (
     <div className="max-w-[1240px] mx-auto px-4 lg:px-0 py-6 font-sans">
       {/* 1. BREADCRUMB */}
-      <nav className="text-black/60 text-sm mb-6 flex gap-2">
+      {/* <nav className="text-black/60 text-sm mb-6 flex gap-2">
         Home <span className="text-black/20">/</span> Shop <span className="text-black/20">/</span> {product.category || 'Men'} <span className="text-black/20">/</span> <span className="text-black font-medium">{product.title}</span>
-      </nav>
+      </nav> */}
 
       {/* 2. PRODUCT MAIN SECTION */}
       <div className="flex flex-col lg:flex-row gap-10 mb-16">
@@ -123,13 +125,25 @@ const Tshirt = ({ product }) => {
               <span className="font-bold text-lg">{quantity}</span>
               <button onClick={() => setQuantity(q => q + 1)}><Plus size={20} /></button>
             </div>
-            <button className="flex-1 bg-black text-white py-4 rounded-full font-medium hover:bg-black/80 transition-all">
+            <button 
+              onClick={() => {
+                console.log("Add to Cart clicked!", { product, quantity, selectedSize, selectedColor });
+                addToCart(product, quantity, selectedSize, selectedColor);
+              }}
+              className="flex-1 bg-black text-white py-4 rounded-full font-medium hover:bg-black/80 transition-all"
+            >
               Add to Cart
             </button>
           </div>
+
+          {/* Notification Toast */}
+          {notification && (
+            <div className="fixed top-20 right-6 bg-green-500 text-white px-6 py-3 rounded-lg font-medium shadow-lg animate-pulse z-[200]">
+              {notification}
+            </div>
+          )}
         </div>
       </div>
-      {/* ... (Rest of your tabs and reviews section) ... */}
     </div>
   );
 };
