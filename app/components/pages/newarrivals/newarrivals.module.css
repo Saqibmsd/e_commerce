@@ -1,0 +1,117 @@
+/* Adjust path to your globals.css as needed */
+@reference "../../../../app/globals.css";
+
+.pageWrapper {
+    @apply min-h-screen bg-white py-6;
+}
+
+.maxContainer {
+    @apply max-w-[1240px] mx-auto;
+}
+
+/* Header Section */
+.headerContainer {
+    @apply mb-12 pt-6 md:pt-8 lg:pt-12;
+}
+
+.newArrivalBadge {
+    @apply inline-flex items-center gap-2 bg-black text-white px-3 md:px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 md:mb-4;
+}
+
+.pageTitle {
+    @apply text-2xl md:text-4xl lg:text-5xl font-black uppercase mb-2 md:mb-3;
+}
+
+.pageDescription {
+    @apply text-black/60 text-xs md:text-sm lg:text-base max-w-2xl;
+}
+
+/* Utility Bar */
+.utilityBar {
+    @apply flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10 pb-6 border-b border-black/10;
+}
+
+.countText {
+    @apply text-sm md:text-base font-medium text-black/60;
+}
+
+.selectWrapper {
+    @apply w-full sm:w-auto relative;
+}
+
+.sortSelect {
+    @apply w-full sm:w-auto bg-[#F0F0F0] text-sm md:text-base font-medium cursor-pointer outline-none px-4 py-2 rounded-full appearance-none pr-10;
+}
+
+.selectIcon {
+    @apply absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-black/60;
+}
+
+/* Product Grid */
+.productGrid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 gap-y-6 md:gap-y-10 lg:gap-y-14;
+}
+
+/* FIXED: Removed @apply group */
+.productCard {
+    @apply block cursor-pointer;
+}
+
+.imageContainer {
+    @apply relative aspect-[3/4] bg-[#F0EEED] rounded-[12px] md:rounded-[20px] overflow-hidden mb-3 md:mb-4;
+}
+
+.productImage {
+    @apply w-full h-full object-contain p-3 md:p-4 transition-transform duration-500;
+}
+
+/* FIXED: Handling Hover using standard CSS nesting */
+.productCard:hover .productImage {
+    @apply scale-105;
+}
+
+/* .productCard:hover .productTitle {
+    @apply underline;
+} */
+
+.discountBadge {
+    @apply absolute top-2 left-2 md:top-3 md:left-3 bg-red-500 text-white text-[8px] md:text-xs font-bold px-2 py-1 rounded;
+}
+
+/* Details */
+.detailsSpace {
+    @apply space-y-1 md:space-y-2;
+}
+
+.productTitle {
+    @apply font-bold text-xs md:text-base lg:text-lg truncate;
+}
+
+.ratingFlex {
+    @apply flex items-center gap-1 md:gap-2;
+}
+
+.starsContainer {
+    @apply flex text-yellow-400;
+}
+
+.pricingFlex {
+    @apply flex items-center gap-2 md:gap-3;
+}
+
+.currentPrice {
+    @apply text-base md:text-xl font-bold;
+}
+
+.oldPrice {
+    @apply text-black/30 line-through text-xs md:text-lg font-bold;
+}
+
+/* Footer Section */
+.footerSection {
+    @apply mt-16 mb-20 flex justify-center border-t border-black/10 pt-10;
+}
+
+.viewAllBtn {
+    @apply px-8 md:px-10 py-3 md:py-4 border border-black/10 rounded-full text-sm md:text-base font-medium hover:bg-black hover:text-white transition-all active:scale-95;
+}

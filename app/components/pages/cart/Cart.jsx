@@ -3,72 +3,72 @@ import React, { useState } from "react";
 import { Trash2, Plus, Minus, ArrowRight, Tag } from "lucide-react";
 import { useCart } from "@/app/context/CartContext";
 import DeliveryForm from "@/app/components/common/DeliveryForm";
+import styles from "./cart.module.css"; // Import the styles
 
 const CartPage = () => {
-  const { cart, removeFromCart, updateQuantity, getTotalPrice } = useCart();
+  const { cart, removeFromCart, updateQuantity } = useCart();
   const [promoCode, setPromoCode] = useState("");
   const [showDeliveryForm, setShowDeliveryForm] = useState(false);
-  const discountPercent = 0.2; // 20% discount
+  const discountPercent = 0.2;
   const deliveryFee = 15;
 
-
-  // Calculations
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const discountAmount = subtotal * discountPercent;
   const total = subtotal - discountAmount + deliveryFee;
 
   return (
-    <div className="min-h-screen bg-white pb-20">
-      <div className="container mx-auto px-4 lg:px-10 py-6">
-        {/* Breadcrumb */}
-        {/* <nav className="text-sm text-black/60 mb-6">
-          Home &gt; <span className="text-black">Cart</span>
-        </nav> */}
+    <div className={styles.cartWrapper}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>YOUR CART</h1>
 
-        <h1 className="text-3xl lg:text-4xl font-black mb-8">YOUR CART</h1>
-
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* --- LEFT: ITEMS LIST --- */}
-          <div className="flex-1 border border-black/10 rounded-[20px] p-4 lg:p-6 space-y-6">
+        <div className={styles.mainLayout}>
+          {/* LEFT: ITEMS LIST */}
+          <div className={styles.itemsList}>
             {cart.length > 0 ? (
               cart.map((item, index) => (
                 <div
                   key={item.cartItemId}
-                  className={`flex gap-4 pb-6 ${
-                    index !== cart.length - 1 ? "border-b border-black/10" : ""
+                  className={`${styles.cartItem} ${
+                    index !== cart.length - 1 ? styles.itemBorder : ""
                   }`}
                 >
-                  {/* Image */}
-                  <div className="w-24 h-24 lg:w-32 lg:h-32 bg-[#F0EEED] rounded-[10px] overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
+                  <div className={styles.imageContainer}>
+                    <img src={item.image} alt={item.title} className={styles.itemImage} />
                   </div>
 
-                  {/* Details */}
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div className="flex justify-between items-start">
+                  <div className={styles.itemDetails}>
+                    <div className={styles.itemHeader}>
                       <div>
-                        <h3 className="font-bold text-base lg:text-xl uppercase">{item.title}</h3>
-                        <p className="text-sm text-black/60">Size: <span className="text-black/80">{item.size}</span></p>
-                        <p className="text-sm text-black/60">Color: <span className="text-black/80">{item.color}</span></p>
+                        <h3 className={styles.itemTitle}>{item.title}</h3>
+                        <p className={styles.itemMeta}>
+                          Size: <span className={styles.itemMetaValue}>{item.size}</span>
+                        </p>
+                        <p className={styles.itemMeta}>
+                          Color: <span className={styles.itemMetaValue}>{item.color}</span>
+                        </p>
                       </div>
-                      <button 
+                      <button
                         onClick={() => removeFromCart(item.cartItemId)}
-                        className="text-red-500 hover:scale-110 transition-transform cursor-pointer"
+                        className={styles.removeBtn}
                       >
                         <Trash2 size={20} />
                       </button>
                     </div>
 
-                    <div className="flex justify-between items-end mt-2">
-                      <span className="text-xl lg:text-2xl font-bold">${item.price}</span>
-                      
-                      {/* Quantity Selector */}
-                      <div className="flex items-center gap-4 bg-[#F0F0F0] px-4 py-2 rounded-full">
-                        <button onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)} className="hover:opacity-50 cursor-pointer">
+                    <div className={styles.itemFooter}>
+                      <span className={styles.price}>${item.price}</span>
+                      <div className={styles.quantitySelector}>
+                        <button 
+                          onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)} 
+                          className={styles.qtyBtn}
+                        >
                           <Minus size={18} />
                         </button>
-                        <span className="font-medium text-sm lg:text-base">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)} className="hover:opacity-50 cursor-pointer">
+                        <span className="font-medium">{item.quantity}</span>
+                        <button 
+                          onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)} 
+                          className={styles.qtyBtn}
+                        >
                           <Plus size={18} />
                         </button>
                       </div>
@@ -77,49 +77,46 @@ const CartPage = () => {
                 </div>
               ))
             ) : (
-              <p className="text-center py-10 text-black/60">Your cart is empty.</p>
+              <p className={styles.emptyMsg}>Your cart is empty.</p>
             )}
           </div>
 
-          {/* --- RIGHT: ORDER SUMMARY --- */}
-          <div className={`lg:w-[400px] border border-black/10 rounded-[20px] p-6 h-fit space-y-6 ${cart.length === 0 ? 'filter blur-sm opacity-100 pointer-events-none' : ''}`}>
-            <h2 className="text-xl lg:text-2xl font-bold">Order Summary</h2>
+          {/* RIGHT: ORDER SUMMARY */}
+          <div className={`${styles.orderSummary} ${cart.length === 0 ? styles.summaryDisabled : ''}`}>
+            <h2 className={styles.summaryTitle}>Order Summary</h2>
             
             <div className="space-y-4">
-              <div className="flex justify-between text-black/60 lg:text-lg">
+              <div className={styles.summaryRow}>
                 <span>Subtotal</span>
-                <span className="text-black font-bold">${subtotal}</span>
+                <span className={styles.summaryLabel}>${subtotal}</span>
               </div>
-              <div className="flex justify-between text-black/60 lg:text-lg">
+              <div className={styles.summaryRow}>
                 <span>Discount (-20%)</span>
-                <span className="text-red-500 font-bold">-${Math.round(discountAmount)}</span>
+                <span className={styles.discountText}>-${Math.round(discountAmount)}</span>
               </div>
-              <div className="flex justify-between text-black/60 lg:text-lg">
+              <div className={styles.summaryRow}>
                 <span>Delivery Fee</span>
-                <span className="text-black font-bold">${deliveryFee}</span>
+                <span className={styles.summaryLabel}>${deliveryFee}</span>
               </div>
-              <hr className="border-black/10" />
-              <div className="flex justify-between text-black text-lg lg:text-xl font-bold">
+              <hr className={styles.divider} />
+              <div className={styles.totalRow}>
                 <span>Total</span>
                 <span>${Math.round(total)}</span>
               </div>
             </div>
 
-            {/* Promo Code */}
-            <div className="flex gap-3">
-              <div className="flex-1 flex items-center gap-2 bg-[#F0F0F0] px-4 py-3 rounded-full">
+            <div className={styles.promoContainer}>
+              <div className={styles.promoInputWrapper}>
                 <Tag className="text-black/40" size={20} />
                 <input 
                   type="text" 
                   placeholder="Add promo code" 
-                  className="bg-transparent outline-none w-full text-sm"
+                  className={styles.promoInput}
                   value={promoCode}
                   onChange={(e) => setPromoCode(e.target.value)}
                 />
               </div>
-              <button onClick={() => setShowDeliveryForm(true)} className="bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-black/80 transition-all cursor-pointer">
-                Apply
-              </button>
+              <button className={styles.applyBtn}>Apply</button>
             </div>
 
             {showDeliveryForm && (
@@ -129,10 +126,12 @@ const CartPage = () => {
               />
             )}
 
-            {/* Checkout Button */}
-            {/* <button className="w-full bg-black text-white py-4 rounded-full font-medium flex items-center justify-center gap-2 hover:bg-black/80 transition-all">
+            <button 
+              onClick={() => setShowDeliveryForm(true)} 
+              className={styles.checkoutBtn}
+            >
               Go to Checkout <ArrowRight size={20} />
-            </button> */}
+            </button>
           </div>
         </div>
       </div>

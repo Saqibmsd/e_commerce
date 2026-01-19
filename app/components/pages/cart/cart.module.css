@@ -1,0 +1,138 @@
+/* 1. REQUIRED FOR TAILWIND v4: This allows @apply to work in CSS Modules */
+/* Adjust the path to where your globals.css or main tailwind entry file is */
+@reference "../../../../app/globals.css";
+
+.cartWrapper {
+    @apply min-h-screen bg-white pb-20;
+}
+
+.container {
+    @apply container mx-auto px-4 lg:px-10 py-6;
+}
+
+.title {
+    @apply text-3xl lg:text-4xl font-black mb-8;
+}
+
+.mainLayout {
+    @apply flex flex-col lg:flex-row gap-8;
+}
+
+/* Left Section: Items */
+.itemsList {
+    @apply flex-1 border border-black/10 rounded-[20px] p-4 lg:p-6 space-y-6;
+}
+
+.cartItem {
+    @apply flex gap-4 pb-6;
+}
+
+.itemBorder {
+    @apply border-b border-black/10;
+}
+
+.imageContainer {
+    @apply w-24 h-24 lg:w-32 lg:h-32 rounded-[10px] overflow-hidden;
+}
+
+.itemImage {
+    @apply w-full h-full object-contain;
+}
+
+.itemDetails {
+    @apply flex-1 flex flex-col justify-between;
+}
+
+.itemHeader {
+    @apply flex justify-between items-start;
+}
+
+.itemTitle {
+    @apply font-bold text-base lg:text-xl uppercase;
+}
+
+.itemMeta {
+    @apply text-sm text-black/60;
+}
+
+.itemMetaValue {
+    @apply text-black/80;
+}
+
+.removeBtn {
+    @apply text-red-500 hover:scale-110 transition-transform cursor-pointer;
+}
+
+.itemFooter {
+    @apply flex justify-between items-end mt-2;
+}
+
+.price {
+    @apply text-xl lg:text-2xl font-bold;
+}
+
+.quantitySelector {
+    @apply flex items-center gap-4 bg-[#F0F0F0] px-4 py-2 rounded-full;
+}
+
+.qtyBtn {
+    @apply hover:opacity-50 cursor-pointer;
+}
+
+/* Right Section: Summary */
+.orderSummary {
+    @apply lg:w-[400px] border border-black/10 rounded-[20px] p-6 h-fit space-y-6;
+}
+
+.summaryDisabled {
+    @apply blur-sm opacity-100 pointer-events-none;
+}
+
+.summaryTitle {
+    @apply text-xl lg:text-2xl font-bold;
+}
+
+.summaryRow {
+    @apply flex justify-between text-black/60 lg:text-lg;
+}
+
+.summaryLabel {
+    @apply text-black font-bold;
+}
+
+.discountText {
+    @apply text-red-500 font-bold;
+}
+
+.divider {
+    @apply border-black/10;
+}
+
+.totalRow {
+    @apply flex justify-between text-black text-lg lg:text-xl font-bold;
+}
+
+/* Inputs & Buttons */
+.promoContainer {
+    @apply flex gap-3;
+}
+
+.promoInputWrapper {
+    @apply flex-1 flex items-center gap-2 bg-[#F0F0F0] px-4 py-3 rounded-full;
+}
+
+.promoInput {
+    @apply bg-transparent outline-none w-full text-sm;
+}
+
+.applyBtn {
+    @apply bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-black/80 transition-all cursor-pointer;
+}
+
+.checkoutBtn {
+    @apply w-full bg-black text-white py-4 rounded-full font-medium flex items-center justify-center gap-2 hover:bg-black/80 transition-all cursor-pointer;
+}
+
+.emptyMsg {
+    @apply text-center py-10 text-black/60;
+}

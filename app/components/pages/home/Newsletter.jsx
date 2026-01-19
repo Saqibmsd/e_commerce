@@ -4,7 +4,7 @@ import { Mail } from "lucide-react";
 const Newsletter = () => {
   return (
     <section className="px-4 md:px-10 relative z-30 -mb-[90px] md:-mb-[100px]">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 lg:px-10">
         <div className="bg-black rounded-[20px] py-9 px-6 md:py-11 md:px-16 flex flex-col lg:flex-row items-center justify-between gap-8">
           
           {/* Headline - Matches image_b50a6c.png & image_b50727.png */}

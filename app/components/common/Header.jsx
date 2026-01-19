@@ -97,9 +97,11 @@ const Header = () => {
             </button>
           </Link>
 
-          <button className="text-black hover:opacity-70">
-            <CircleUserRound size={22} />
-          </button>
+          <Link href="/profile">
+            <button className="text-black hover:opacity-70 cursor-pointer mt-2 relative">
+              <CircleUserRound size={22} />
+            </button>
+          </Link>
         </div>
       </div>
 

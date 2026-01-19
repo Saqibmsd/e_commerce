@@ -1,0 +1,131 @@
+@reference "../../../../app/globals.css";
+
+.mainContainer {
+    @apply max-w-[1200px] mx-auto px-4 lg:px-0 py-6 font-sans;
+}
+
+/* Product Main Section */
+.productWrapper {
+    @apply flex flex-col lg:flex-row gap-10 mb-16;
+}
+
+/* Gallery Section */
+.galleryLayout {
+    @apply flex flex-col-reverse lg:flex-row gap-4 lg:w-1/2;
+}
+
+.thumbnailList {
+    @apply flex lg:flex-col gap-3 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0;
+}
+
+.thumbnailItem {
+    @apply min-w-[110px] h-[110px] lg:w-[152px] lg:h-[167px] bg-[#F0EEED] rounded-[20px] overflow-hidden cursor-pointer border-2 transition-all;
+}
+
+.thumbnailActive {
+    @apply border-black;
+}
+
+.thumbnailInactive {
+    @apply border-transparent;
+}
+
+.mainImageDisplay {
+    @apply flex-1 bg-[#F0EEED] rounded-[20px] overflow-hidden aspect-square lg:aspect-auto;
+}
+
+.fullImg {
+    @apply w-full h-full object-contain;
+}
+
+/* Info Section */
+.infoSection {
+    @apply lg:w-1/2 flex flex-col;
+}
+
+.productTitle {
+    @apply text-3xl lg:text-[40px] font-black leading-tight mb-3 uppercase italic;
+}
+
+.ratingRow {
+    @apply flex items-center gap-2 mb-4;
+}
+
+.stars {
+    @apply flex text-yellow-400;
+}
+
+.priceRow {
+    @apply flex items-center gap-3 mb-6;
+}
+
+.currentPrice {
+    @apply text-2xl lg:text-3xl font-bold;
+}
+
+.oldPrice {
+    @apply text-2xl lg:text-3xl font-bold text-black/30 line-through;
+}
+
+.discountBadge {
+    @apply bg-red-100 text-red-500 px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.descriptionText {
+    @apply text-black/60 text-sm lg:text-base mb-6 border-b border-black/10 pb-6;
+}
+
+/* Selection Areas */
+.sectionLabel {
+    @apply text-black/60 text-sm mb-4;
+}
+
+.selectionBox {
+    @apply mb-6 border-b border-black/10 pb-6;
+}
+
+.colorGrid {
+    @apply flex gap-4;
+}
+
+.colorCircle {
+    @apply w-9 h-9 rounded-full cursor-pointer flex items-center justify-center transition-all hover:scale-110;
+}
+
+.sizeGrid {
+    @apply flex flex-wrap gap-3;
+}
+
+.sizeBtn {
+    @apply px-6 py-3 rounded-full text-sm transition-all;
+}
+
+.sizeActive {
+    @apply bg-black text-white;
+}
+
+.sizeInactive {
+    @apply bg-[#F0F0F0] text-black/60 hover:bg-black/10;
+}
+
+/* Actions */
+.actionRow {
+    @apply flex gap-4 items-center;
+}
+
+.quantitySelector {
+    @apply flex items-center gap-6 bg-[#F0F0F0] px-6 py-4 rounded-full;
+}
+
+.qtyValue {
+    @apply font-bold text-lg;
+}
+
+.addToCartBtn {
+    @apply flex-1 bg-black text-white py-4 rounded-full font-medium hover:bg-black/80 transition-all;
+}
+
+/* Notification */
+.toast {
+    @apply fixed top-20 right-6 bg-green-500 text-white px-6 py-3 rounded-lg font-medium shadow-lg animate-pulse z-[200];
+}

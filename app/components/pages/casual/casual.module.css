@@ -1,0 +1,117 @@
+/* REQUIRED: Tells Tailwind v4 where to find your theme and utilities */
+@reference "../../../../app/globals.css";
+
+.pageWrapper {
+    @apply min-h-screen bg-white;
+}
+
+.maxContainer {
+    /* 'container' is a special class; using max-width and margin instead */
+    @apply container mx-auto px-4 lg:px-10 py-6;
+}
+
+.mainFlexLayout {
+    @apply flex gap-8;
+}
+
+/* Sidebar & Mobile Drawer */
+.sidebarSticky {
+    @apply hidden lg:block w-[295px] border rounded-[20px] p-6 h-fit sticky top-6;
+}
+
+.mobileDrawerOverlay {
+    @apply fixed inset-0 bg-black/40 z-[100] transition-opacity lg:hidden;
+}
+
+.mobileDrawerContent {
+    @apply fixed inset-x-0 bottom-0 z-[101] bg-white rounded-t-[30px] p-6 transition-transform duration-300 lg:hidden max-h-[90vh] overflow-y-auto;
+}
+
+/* Sidebar Elements */
+.sidebarTitleRow {
+    @apply flex justify-between items-center border-b pb-4;
+}
+
+.sidebarSection {
+    @apply border-b pb-6;
+}
+
+.categoryItem {
+    @apply flex justify-between items-center cursor-pointer transition-all;
+}
+
+.sectionHeader {
+    @apply flex justify-between items-center w-full mb-4 font-bold;
+}
+
+/* Filters Components */
+.colorGrid {
+    @apply grid grid-cols-5 gap-3;
+}
+
+.colorCircle {
+    @apply w-9 h-9 rounded-full border border-black/10 flex items-center justify-center transition-transform active:scale-90;
+}
+
+.sizeFlex {
+    @apply flex flex-wrap gap-2;
+}
+
+.sizeButton {
+    @apply px-5 py-2 rounded-full text-sm transition-all;
+}
+
+.rangeInput {
+    @apply w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-black bg-transparent z-10;
+}
+
+/* Main Content Area */
+.productGrid {
+    @apply grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 border-b pb-12;
+}
+
+.productCard {
+    @apply cursor-pointer;
+}
+
+.imageContainer {
+    @apply aspect-square bg-[#F0EEED] rounded-[20px] overflow-hidden mb-4;
+}
+
+.productImage {
+    @apply w-full h-full object-contain transition duration-500;
+}
+
+/* REPLACING group-hover: Handle the hover effect manually in CSS */
+.productCard:hover .productImage {
+    @apply scale-110;
+}
+
+.priceText {
+    @apply font-bold text-lg md:text-xl;
+}
+
+.oldPriceText {
+    @apply text-black/40 line-through font-bold text-sm md:text-lg;
+}
+
+.discountBadge {
+    @apply bg-red-100 text-red-500 text-[10px] px-2 py-0.5 rounded-full;
+}
+
+/* Buttons & Pagination */
+.actionButton {
+    @apply w-full bg-black text-white py-4 rounded-full font-medium mt-2 hover:bg-black/90 active:scale-[0.98] transition-all cursor-pointer;
+}
+
+.paginationWrapper {
+    @apply flex justify-between items-center mt-10 transition-all;
+}
+
+.pageBtn {
+    @apply px-4 py-2 border rounded-lg text-sm font-medium transition-all;
+}
+
+.pageNumber {
+    @apply w-10 h-10 rounded-lg text-sm font-medium transition-all;
+}

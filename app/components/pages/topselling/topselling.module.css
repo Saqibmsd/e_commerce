@@ -1,0 +1,112 @@
+/* REQUIRED: Link to your theme variables */
+@reference "../../../../app/globals.css";
+
+.pageWrapper {
+    @apply min-h-screen bg-white py-6;
+}
+
+.maxContainer {
+    @apply max-w-[1240px] mx-auto;
+}
+
+/* 1. Header Section */
+.heroSection {
+    @apply mb-12 pt-6 md:pt-8 lg:pt-12;
+}
+
+.topRatedBadge {
+    @apply inline-flex items-center gap-2 bg-black text-white px-3 md:px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-3 md:mb-4;
+}
+
+.title {
+    @apply text-2xl md:text-4xl lg:text-5xl font-black uppercase mb-2 md:mb-3;
+}
+
+.description {
+    @apply text-black/60 text-xs md:text-sm lg:text-base max-w-2xl;
+}
+
+/* 2. Utility Bar */
+.utilityBar {
+    @apply flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10 pb-6 border-b border-black/10;
+}
+
+.showingText {
+    @apply text-sm md:text-base font-medium text-black/60;
+}
+
+.selectContainer {
+    @apply w-full sm:w-auto relative;
+}
+
+.sortSelect {
+    @apply w-full sm:w-auto bg-[#F0F0F0] text-sm md:text-base font-medium cursor-pointer outline-none px-4 py-2 rounded-full appearance-none pr-10;
+}
+
+.selectIcon {
+    @apply absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-black/60;
+}
+
+/* 3. Product Grid */
+.productGrid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6 gap-y-6 md:gap-y-10 lg:gap-y-14;
+}
+
+.productCard {
+    @apply relative block cursor-pointer;
+}
+
+.imageContainer {
+    @apply relative aspect-square bg-[#F0EEED] rounded-[12px] md:rounded-[20px] overflow-hidden mb-3 md:mb-5;
+}
+
+.productImage {
+    @apply w-full h-full object-contain p-3 md:p-6 transition-transform duration-700 ease-in-out;
+}
+
+/* REPLACING group-hover: Handle hover logic via CSS nesting */
+.productCard:hover .productImage {
+    @apply scale-110;
+}
+
+.bestSellerBadge {
+    @apply absolute top-2 right-2 md:top-4 md:right-4 bg-white/90 backdrop-blur-sm px-2 py-1 md:px-3 md:py-1 rounded-full shadow-sm text-[8px] md:text-[10px] font-bold uppercase text-black;
+}
+
+/* Product Info */
+.infoWrapper {
+    @apply px-1;
+}
+
+.productTitle {
+    @apply font-bold text-xs md:text-base lg:text-lg mb-1 md:mb-2 truncate leading-tight;
+}
+
+.ratingRow {
+    @apply flex items-center gap-1 md:gap-1.5 mb-2;
+}
+
+.starsContainer {
+    @apply flex text-yellow-400;
+}
+
+.reviewCount {
+    @apply text-[10px] md:text-xs text-black/50;
+}
+
+.pricingRow {
+    @apply flex items-center gap-2 md:gap-3;
+}
+
+.price {
+    @apply text-base md:text-xl font-black text-black;
+}
+
+.oldPrice {
+    @apply text-black/30 line-through text-xs md:text-base font-bold;
+}
+
+/* 4. Footer Spacer */
+.footerSpacer {
+    @apply h-24;
+}
