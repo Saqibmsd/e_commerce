@@ -7,7 +7,6 @@ const Newsletter = () => {
       <div className="container mx-auto px-4 lg:px-10">
         <div className="bg-black rounded-[20px] py-9 px-6 md:py-11 md:px-16 flex flex-col lg:flex-row items-center justify-between gap-8">
           
-          {/* Headline - Matches image_b50a6c.png & image_b50727.png */}
           <h2 className="text-white text-3xl md:text-[40px] font-black leading-tight uppercase tracking-tighter max-w-[550px]">
             STAY UPTO DATE ABOUT OUR LATEST OFFERS
           </h2>

@@ -4,10 +4,6 @@ const Brands = () => {
   return (
     <div className="bg-black w-full py-6 md:py-10">
       <div className="container mx-auto px-4 lg:px-10">
-        {/* Responsive Grid: 
-            - 2 columns on mobile (to match image_a52530)
-            - 5 columns on desktop (to match image_a5218b) 
-        */}
         <div className="flex flex-wrap justify-center md:justify-between items-center gap-y-6 md:gap-x-8 lg:gap-x-12">
           
           {/* VERSACE */}

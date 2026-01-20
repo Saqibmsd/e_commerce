@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   LogOut, User, Mail, Phone, MapPin, Edit2, 
   ShoppingBag, Heart, Settings, Clock
 } from "lucide-react";
 import styles from "./profile.module.css";
+import { useCart } from '../../../context/CartContext';
 
 const ProfileDashboard = () => {
+  const { orders } = useCart();
   const [isEditing, setIsEditing] = useState(false);
   const [activeTab, setActiveTab] = useState("profile");
   const [profileData, setProfileData] = useState({
@@ -121,33 +123,63 @@ const ProfileDashboard = () => {
 
         {activeTab === "orders" && (
           <section className={styles.ordersSection}>
-            <h2>Recent Orders</h2>
+            <h2>Your Orders</h2>
             <div className="space-y-4 mt-6">
-              {recentOrders.map((order) => (
-                <div key={order.id} className={styles.orderCard}>
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <p className="font-black text-lg">{order.id}</p>
-                      <p className="flex items-center gap-1 text-xs text-gray-400 font-bold">
-                        <Clock size={12} /> {new Date(order.date).toLocaleDateString()}
-                      </p>
+              {orders && orders.length > 0 ? (
+                orders.map((order, index) => (
+                  <div key={index} className={styles.orderCard}>
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <p className="font-black text-lg">Order #{order.id}</p>
+                        <p className="flex items-center gap-1 text-xs text-gray-400 font-bold">
+                          <Clock size={12} /> {new Date(order.date).toLocaleDateString()}
+                        </p>
+                      </div>
+                      <span className={`${styles.status} ${styles.pending}`}>
+                        Pending
+                      </span>
                     </div>
-                    <span className={`${styles.status} ${styles[order.status.toLowerCase()]}`}>
-                      {order.status}
-                    </span>
+                    
+                    <div className="border-t border-gray-100 pt-4 mt-4">
+                      <p className="font-bold text-sm mb-3">Products Ordered:</p>
+                      <div className="space-y-2">
+                        {order.items && order.items.map((item, idx) => (
+                          <div key={idx} className="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <div>
+                              <p className="font-medium text-sm">{item.title}</p>
+                              <p className="text-xs text-gray-500">Size: {item.size} | Color: {item.color}</p>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-sm font-bold">${item.price}</p>
+                              <p className="text-xs text-gray-500">Qty: {item.quantity}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-4 border-t border-gray-100 pt-4 mt-4">
+                      <div>
+                        <p className={styles.label}>Total Items</p>
+                        <p className={styles.value}>{order.items ? order.items.length : 0}</p>
+                      </div>
+                      <div>
+                        <p className={styles.label}>Total Price</p>
+                        <p className={styles.value}>${order.total}</p>
+                      </div>
+                      <div>
+                        <p className={styles.label}>Status</p>
+                        <p className={styles.value}>Pending</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 border-t border-gray-100 pt-4">
-                    <div>
-                      <p className={styles.label}>Items</p>
-                      <p className={styles.value}>{order.items}</p>
-                    </div>
-                    <div>
-                      <p className={styles.label}>Total</p>
-                      <p className={styles.value}>{order.total}</p>
-                    </div>
-                  </div>
+                ))
+              ) : (
+                <div className="text-center py-12">
+                  <ShoppingBag size={48} className="mx-auto text-gray-200 mb-4" />
+                  <p className="font-bold text-gray-400">No orders yet</p>
                 </div>
-              ))}
+              )}
             </div>
           </section>
         )}

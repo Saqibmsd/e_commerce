@@ -17,10 +17,6 @@ const Browse = () => {
           BROWSE BY DRESS STYLE
         </h2>
 
-        {/* Grid Logic:
-           - Mobile: 1 column (stacking vertically)
-           - Desktop: 3 columns with custom spans
-        */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {styles.map((style, index) => (
             <div

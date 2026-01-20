@@ -5,19 +5,29 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [notification, setNotification] = useState(null);
   const [newItemsCount, setNewItemsCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load cart from localStorage on mount
+  // Load cart and orders from localStorage on mount
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
+    const savedOrders = localStorage.getItem("orders");
     if (savedCart) {
       try {
         setCart(JSON.parse(savedCart));
       } catch (error) {
         console.error("Error loading cart:", error);
         setCart([]);
+      }
+    }
+    if (savedOrders) {
+      try {
+        setOrders(JSON.parse(savedOrders));
+      } catch (error) {
+        console.error("Error loading orders:", error);
+        setOrders([]);
       }
     }
     setIsLoaded(true);
@@ -30,6 +40,14 @@ export const CartProvider = ({ children }) => {
       console.log("Cart saved to localStorage:", cart);
     }
   }, [cart, isLoaded]);
+
+  // Save orders to localStorage whenever it changes
+  useEffect(() => {
+    if (isLoaded) {
+      localStorage.setItem("orders", JSON.stringify(orders));
+      console.log("Orders saved to localStorage:", orders);
+    }
+  }, [orders, isLoaded]);
 
   const addToCart = (product, quantity, size, color) => {
     const newItem = {
@@ -89,16 +107,29 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
+  const addOrder = (orderData) => {
+    const newOrder = {
+      id: Date.now(),
+      date: new Date().toISOString(),
+      ...orderData,
+    };
+    setOrders((prevOrders) => [...prevOrders, newOrder]);
+    console.log("Order added:", newOrder);
+    return newOrder;
+  };
+
   return (
     <CartContext.Provider
       value={{
         cart,
+        orders,
         addToCart,
         removeFromCart,
         updateQuantity,
         clearCart,
         getTotalItems,
         getTotalPrice,
+        addOrder,
         notification,
         newItemsCount,
         clearNotificationBadge,

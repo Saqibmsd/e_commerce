@@ -50,8 +50,6 @@ const NewArrivals = () => {
           {products.map((product, index) => (
             <div 
               key={product.id} 
-              /* Hides the 3rd and 4th items on small screens (hidden), 
-                 shows them on medium screens and up (md:block) */
               className={`group cursor-pointer ${index >= 2 ? 'hidden md:block' : 'block'}`}
             >
               {/* Image Container */}

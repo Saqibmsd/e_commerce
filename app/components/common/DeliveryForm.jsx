@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function DeliveryForm({ total = 0, onClose = () => {} }) {
+export default function DeliveryForm({ total = 0, onClose = () => {}, onSubmit = null }) {
   const router = useRouter();
   const [form, setForm] = useState({
     name: "",
@@ -12,6 +12,7 @@ export default function DeliveryForm({ total = 0, onClose = () => {} }) {
     city: "",
     postalCode: "",
     notes: "",
+    paymentMethod: "credit",
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
@@ -28,6 +29,15 @@ export default function DeliveryForm({ total = 0, onClose = () => {} }) {
     setMessage(null);
 
     try {
+      // If onSubmit callback is provided, call it first to save order to context
+      if (onSubmit) {
+        onSubmit({
+          name: form.name,
+          address: form.address,
+          paymentMethod: form.paymentMethod,
+        });
+      }
+
       const res = await fetch("/api/notify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -138,6 +148,17 @@ export default function DeliveryForm({ total = 0, onClose = () => {} }) {
               placeholder="Additional notes (optional)"
               className="w-full px-4 py-3 border border-black/10 rounded-lg min-h-[80px]"
             />
+
+            <select
+              name="paymentMethod"
+              value={form.paymentMethod}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-black/10 rounded-lg"
+            >
+              <option value="credit">Credit Card</option>
+              <option value="paypal">PayPal</option>
+              <option value="bank">Bank Transfer</option>
+            </select>
 
             <div className="flex items-center justify-between gap-3">
               <div>

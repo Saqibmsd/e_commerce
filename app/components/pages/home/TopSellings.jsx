@@ -68,7 +68,6 @@ const TopSelling = () => {
               {/* Star Rating Logic */}
               <div className="flex items-center gap-1 md:gap-2 mb-1">
                 <div className="flex text-yellow-400">
-                  {/* Simple loop for stars based on rating */}
                   {[...Array(Math.floor(product.rating))].map((_, i) => (
                     <Star key={i} size={14} fill="currentColor" />
                   ))}

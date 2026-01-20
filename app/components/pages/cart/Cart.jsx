@@ -6,7 +6,7 @@ import DeliveryForm from "@/app/components/common/DeliveryForm";
 import styles from "./cart.module.css"; // Import the styles
 
 const CartPage = () => {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, updateQuantity, addOrder, clearCart } = useCart();
   const [promoCode, setPromoCode] = useState("");
   const [showDeliveryForm, setShowDeliveryForm] = useState(false);
   const discountPercent = 0.2;
@@ -16,8 +16,23 @@ const CartPage = () => {
   const discountAmount = subtotal * discountPercent;
   const total = subtotal - discountAmount + deliveryFee;
 
+  const handleCheckoutSubmit = (formData) => {
+    const order = {
+      name: formData.name,
+      address: formData.address,
+      paymentMethod: formData.paymentMethod,
+      items: cart,
+      total: Math.round(total),
+    };
+    addOrder(order);
+    clearCart();
+    setShowDeliveryForm(false);
+    alert("Order placed successfully!");
+  };
+
   return (
     <div className={styles.cartWrapper}>
+
       <div className={styles.container}>
         <h1 className={styles.title}>YOUR CART</h1>
 
@@ -123,6 +138,7 @@ const CartPage = () => {
               <DeliveryForm
                 total={Math.round(total)}
                 onClose={() => setShowDeliveryForm(false)}
+                onSubmit={handleCheckoutSubmit}
               />
             )}
 

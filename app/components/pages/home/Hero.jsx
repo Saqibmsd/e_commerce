@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="bg-primary overflow-hidden">
+    <section className="overflow-hidden">
       <div className="container mx-auto px-4 lg:px-10 py-10 md:py-0 flex flex-col md:flex-row items-center">
         {/* Left Content */}
         <div className="w-full md:w-1/2 pt-10 md:pt-20 pb-10 md:pb-20">
@@ -21,53 +21,40 @@ const Hero = () => {
             </button>
           </Link>
           {/* Stats */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-8 md:gap-12">
-            <div>
-              <h3 className="text-2xl md:text-4xl font-bold text-black">
-                200+
-              </h3>
-              <p className="text-gray-500 text-sm md:text-base">
+          <div className="flex flex-nowrap md:flex-wrap justify-between md:justify-start gap-4 md:gap-12">
+            <div className="text-center">
+              <h3 className="text-xl md:text-4xl font-bold text-black">200+</h3>
+              <p className="text-gray-500 text-xs md:text-base">
                 International Brands
               </p>
             </div>
-            <div className="border-x border-gray-300 px-8 hidden md:block">
-              <h3 className="text-2xl md:text-4xl font-bold text-black">
+
+            <div className="text-center md:border-x md:border-gray-300 md:px-8">
+              <h3 className="text-xl md:text-4xl font-bold text-black">
                 2,000+
               </h3>
-              <p className="text-gray-500 text-sm md:text-base">
+              <p className="text-gray-500 text-xs md:text-base">
                 High-Quality Products
               </p>
             </div>
-            {/* Mobile version of middle stat without borders */}
-            <div className="md:hidden">
-              <h3 className="text-2xl md:text-4xl font-bold text-black">
-                2,000+
-              </h3>
-              <p className="text-gray-500 text-sm md:text-base">
-                High-Quality Products
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl md:text-4xl font-bold text-black">
+
+            <div className="text-center">
+              <h3 className="text-xl md:text-4xl font-bold text-black">
                 30,000+
               </h3>
-              <p className="text-gray-500 text-sm md:text-base">
+              <p className="text-gray-500 text-xs md:text-base">
                 Happy Customers
               </p>
             </div>
           </div>
         </div>
-
-        {/* Right Content (Image & Stars) */}
         <div className="w-full md:w-1/2 relative min-h-[448px] md:min-h-[663px]">
-          {/* Main Image */}
           <img
             src="/images/hero/hero.png"
             alt="Fashion Models"
             className="absolute bottom-0 md:right-[18%] object-contain md:object-cover object-bottom z-10"
           />
 
-          {/* Large Star (Top Right) using your PNG */}
           <div className="absolute top-10 right-4 md:top-[80px] md:right-0 z-20">
             <img
               src="/images/hero/Vector.png"
@@ -75,8 +62,6 @@ const Hero = () => {
               className="w-[56px] h-[56px] md:w-[104px] md:h-[104px] object-contain"
             />
           </div>
-
-          {/* Small Star (Left Middle) using your PNG */}
           <div className="absolute top-1/2 left-0 md:left-6 -translate-y-1/2 z-20">
             <img
               src="/images/hero/Vector.png"
@@ -85,7 +70,6 @@ const Hero = () => {
             />
           </div>
         </div>
-        {/* Large Star (Top Right) */}
       </div>
     </section>
   );
