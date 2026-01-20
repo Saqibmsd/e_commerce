@@ -11,7 +11,7 @@
 
 /* 1. Header Section */
 .heroSection {
-    @apply mb-12 pt-6 md:pt-8 lg:pt-12;
+    @apply mb-12;
 }
 
 .topRatedBadge {
