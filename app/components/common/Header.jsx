@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { ArrowRight, Instagram, Twitter, Facebook } from "lucide-react";
 import {
   Menu,
   X,
@@ -105,24 +106,78 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 w-full bg-white border-b border-gray-200 py-4 px-6 flex flex-col gap-4 font-medium animate-in slide-in-from-top-2">
-          {/* <a href="/shop" onClick={() => setIsMenuOpen(false)}>
-            Shop
-          </a> */}
-          <a href="/" onClick={() => setIsMenuOpen(false)}>
-            Home
-          </a>
-          <a href="/casual" onClick={() => setIsMenuOpen(false)}>
-            Casual
-          </a>
-          <a href="/topselling" onClick={() => setIsMenuOpen(false)}>
-            Top Selling
-          </a>
-          <a href="/newarrivals" onClick={() => setIsMenuOpen(false)}>
-            New Arrivals
-          </a>
+        <div className="fixed inset-0 z-50 md:hidden">
+          {/* 1. Blurred Backdrop Overlay */}
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-md animate-in fade-in duration-300"
+            onClick={() => setIsMenuOpen(false)}
+          />
+
+          {/* 2. Menu Content Card */}
+          <div className="absolute left-0 top-0 rounded-r-4xl border-rounded h-full w-[85%] bg-gray-900 py-8 px-6 shadow-2xl animate-in slide-in-from-left duration-500 ease-out flex flex-col">
+            {/* Close Button Header */}
+            <div className="flex justify-end mb-8">
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 rounded-full bg-gray-300 hover:bg-gray-200 transition-colors"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="black"
+                  strokeWidth="2"
+                >
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* 3. Main Navigation Links */}
+            <nav className="flex flex-col gap-4">
+              {[
+                { name: "Home", href: "/" },
+                { name: "Casual", href: "/casual" },
+                { name: "Top Selling", href: "/topselling" },
+                { name: "New Arrivals", href: "/newarrivals" },
+              ].map((item, index) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="group flex items-center justify-between border-b border-gray-300 pb-2"
+                  style={{
+                    animationDelay: `${index * 75}ms`,
+                    animationFillMode: "both",
+                  }}
+                >
+                  <span className="text-2xl font-bold tracking-tight text-gray-300 group-hover:text-blue-600 transition-colors">
+                    {item.name}
+                  </span>
+                  <ArrowRight className=" -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-gray-300" />
+                </a>
+              ))}
+            </nav>
+
+            {/* 4. Bottom Section (Socials & Contact) */}
+            <div className="mt-12">
+              <p className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-6">
+                Follow Us
+              </p>
+              <div className="flex gap-4">
+                <Instagram className="w-6 h-6 text-gray-400 hover:text-pink-600 transition-colors cursor-pointer" />
+                <Twitter className="w-6 h-6 text-gray-400 hover:text-blue-400 transition-colors cursor-pointer" />
+                <Facebook className="w-6 h-6 text-gray-400 hover:text-blue-700 transition-colors cursor-pointer" />
+              </div>
+
+              <div className="mt-8 p-4 bg-gray-100 rounded-2xl">
+                <p className="text-sm font-medium text-gray-900">Need help?</p>
+                <p className="text-xs text-gray-500">support@yourbrand.com</p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </header>
