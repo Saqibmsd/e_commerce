@@ -13,7 +13,7 @@ const Browse = () => {
       {/* Light grey rounded background container */}
       <div className="bg-[#F0F0F0] rounded-[20px] md:rounded-[40px] pt-10 pb-8 md:pt-16 md:pb-20 px-6 md:px-16">
         
-        <h2 className="text-3xl md:text-5xl font-black text-center mb-8 md:mb-16 uppercase tracking-tighter">
+        <h2 className="text-3xl md:text-5xl font-black text-center mb-10 md:mb-14 uppercase tracking-tighter">
           BROWSE BY DRESS STYLE
         </h2>
 

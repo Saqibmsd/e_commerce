@@ -16,7 +16,7 @@ const Hero = () => {
             style.
           </p>
           <Link href="/casual">
-            <button className="w-full sm:w-auto md:w-52 bg-black text-white py-3 sm:py-3 md:py-3 lg:py-4 px-8 sm:px-10 md:px-12 rounded-full font-medium cursor-pointer hover:bg-black/80 transition-all mb-8 sm:mb-10 md:mb-12 lg:mb-12 text-sm sm:text-base">
+            <button className="sm:w-auto md:w-52 bg-black text-white py-3 sm:py-3 md:py-3 lg:py-4 px-8 sm:px-10 md:px-12 rounded-full font-medium cursor-pointer hover:bg-black/80 transition-all mb-8 sm:mb-10 md:mb-12 lg:mb-12 text-sm sm:text-base">
               Shop Now
             </button>
           </Link>

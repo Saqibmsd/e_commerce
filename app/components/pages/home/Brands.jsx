@@ -19,7 +19,7 @@ const Brands = () => {
 
           {/* ZARA */}
           <div className="flex justify-center">
-            <h2 className="text-white text-s md:text-4xl lg:text-[44px] font-sans font-bold tracking-tighter">
+            <h2 className="text-white text-s md:text-3xl lg:text-[44px] font-sans font-bold tracking-tighter">
               ZARA
             </h2>
           </div>

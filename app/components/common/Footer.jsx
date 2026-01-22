@@ -89,7 +89,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-gray-200">
         <div className="container mx-auto px-4 lg:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm">Shop.co © 2000–2023, All Rights Reserved</p>
+          <p className="text-sm">Shop.co © 2026, All Rights Reserved</p>
 
           {/* Payment icons using stylized badges */}
           <div className="flex items-center gap-2">
