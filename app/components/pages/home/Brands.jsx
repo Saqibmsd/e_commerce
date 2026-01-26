@@ -1,50 +1,48 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { motion, useAnimationControls } from "framer-motion";
 
 const Brands = () => {
+  const brandList = [
+    { name: "VERSACE", className: "font-serif tracking-widest" },
+    { name: "ZARA", className: "font-sans font-bold tracking-tighter" },
+    { name: "GUCCI", className: "font-serif font-semibold" },
+    { name: "PRADA", className: "font-serif font-black" },
+    { name: "CALVIN KLEIN", className: "font-sans font-bold" },
+  ];
+
+  const duplicatedBrands = [...brandList, ...brandList, ...brandList]; // Tripled for better manual drag range
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="bg-black w-full py-8 md:py-10">
+    <div className="bg-black w-full py-4 md:py-6 lg:py-8 overflow-hidden cursor-grab active:cursor-grabbing">
       <div className="container mx-auto px-4 lg:px-10">
-        {/* Mobile: Grid with 2 columns, centered items. 
-            Tablet (768px): Flex row with wrapping.
-            Desktop (1024px): Single spread-out row.
-        */}
-        <div className="xs grid grid-cols-4 gap-4 md:flex md:flex-nowrap items-center justify-center md:justify-between md:gap-x-8 lg:gap-x-12">
-          
-          {/* VERSACE */}
-          <div className="flex justify-center">
-             <h2 className="text-white text-s md:text-3xl lg:text-[44px] font-serif tracking-widest">
-               VERSACE
-             </h2>
-          </div>
-
-          {/* ZARA */}
-          <div className="flex justify-center">
-            <h2 className="text-white text-s md:text-3xl lg:text-[44px] font-sans font-bold tracking-tighter">
-              ZARA
-            </h2>
-          </div>
-
-          {/* GUCCI */}
-          <div className="flex justify-center">
-            <h2 className="text-white text-s md:text-3xl lg:text-[44px] font-serif font-semibold">
-              GUCCI
-            </h2>
-          </div>
-
-          {/* PRADA */}
-          <div className="flex justify-center">
-            <h2 className="text-white text-s md:text-3xl lg:text-[44px] font-serif font-black">
-              PRADA
-            </h2>
-          </div>
-
-          {/* Calvin Klein - Col-span-2 on mobile centers it alone on the 3rd row */}
-          {/* <div className="col-span-2 md:col-span-2 flex justify-center">
-            <h2 className="text-white text-2xl md:text-3xl lg:text-[44px] font-sans font-light">
-              Calvin Klein
-            </h2>
-          </div>} */}
-
+        <div className="flex w-max">
+          <motion.div
+            className="flex items-center gap-x-8 md:gap-x-20 lg:gap-x-28 pr-8 md:pr-20 lg:pr-28"
+            // 1. Auto Animation
+            animate={isHovered ? {} : { x: ["0%", "-33.33%"] }}
+            transition={{
+              ease: "linear",
+              duration: 20,
+              repeat: Infinity,
+            }}
+            // 2. Hover to Stop
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            // 3. Manual Drag/Scroll
+            drag="x"
+            dragConstraints={{ left: -1000, right: 0 }} // Limits how far it can be dragged
+            style={{ x: 0 }} 
+          >
+            {duplicatedBrands.map((brand, index) => (
+              <div key={index} className="flex justify-center flex-shrink-0 select-none">
+                <h2 className={`text-white text-s md:text-3xl lg:text-[44px] ${brand.className}`}>
+                  {brand.name}
+                </h2>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </div>
