@@ -88,7 +88,7 @@ const Hero = () => {
               whileHover="hover"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 5, ease: [0.16, 1, 0.3, 1] }}
               className="sm:w-auto md:w-52 bg-black text-white py-3 sm:py-3 md:py-3 lg:py-4 px-8 sm:px-10 md:px-12 rounded-full font-medium cursor-pointer hover:bg-black/80 mb-8 sm:mb-10 md:mb-12 lg:mb-12 text-sm sm:text-base"
             >
               Shop Now
@@ -139,7 +139,7 @@ const Hero = () => {
             alt="Fashion Models"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 5, ease: [0.16, 1, 0.3, 1] }}
             className="w-[75%] sm:w-[80%] md:w-[85%] lg:w-auto h-auto max-h-full object-contain md:object-cover z-10"
           />
 
@@ -152,6 +152,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               variants={buttonVariant}
+              transition={{ duration: 5, ease: [0.16, 1, 0.3, 1] }}
               whileHover="hover"
               className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-[104px] lg:h-[104px]"
             />
@@ -165,6 +166,7 @@ const Hero = () => {
               alt="star icon"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 5, ease: [0.16, 1, 0.3, 1] }}
               variants={buttonVariant}
               whileHover="hover"
               className="w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 lg:w-14 lg:h-14"

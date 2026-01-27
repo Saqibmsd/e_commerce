@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-
-// Swiper
+import Link from "next/link";
+import { motion } from "motion/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
@@ -53,19 +53,29 @@ const Reviews = () => {
 
         {/* Header */}
         <div className="flex justify-between items-end mb-10">
-          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter">
+          <motion.h2
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+            className="text-3xl md:text-5xl font-black uppercase tracking-tighter">
             OUR HAPPY CUSTOMERS
-          </h2>
+          </motion.h2>
 
           {/* Custom Navigation */}
-          <div className="flex md:gap-4 gap-2">
+          <motion.div
+                          initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+          className="flex md:gap-4 gap-2">
             <button className="review-prev p-2 rounded-full border border-black/10 hover:bg-gray-100 transition">
               <ArrowLeft className="md:w-6 md:h-6 w-4 h-4" />
             </button>
             <button className="review-next p-2 rounded-full border border-black/10 hover:bg-gray-100 transition">
               <ArrowRight className="md:w-6 md:h-6 w-4 h-4" />
             </button>
-          </div>
+          </motion.div>
         </div>
 
         {/* Swiper */}
@@ -86,7 +96,12 @@ const Reviews = () => {
         >
           {reviews.map((review) => (
             <SwiperSlide key={review.id} className="h-auto">
-              <div className="h-full min-h-[280px] border border-black/10 rounded-[20px] p-6 md:p-8 flex flex-col gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+                className="h-full min-h-[280px] border border-black/10 rounded-[20px] p-6 md:p-8 flex flex-col gap-4">
 
                 {/* Stars */}
                 <div className="flex gap-1 text-[#FFC633]">
@@ -109,7 +124,7 @@ const Reviews = () => {
                 <p className="flex-grow text-black/60 leading-relaxed text-sm md:text-base italic">
                   {review.text}
                 </p>
-              </div>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>

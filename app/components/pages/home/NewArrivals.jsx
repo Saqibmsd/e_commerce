@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import { Star, StarHalf } from "lucide-react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 
 const products = [
   {
@@ -36,17 +38,39 @@ const products = [
     image: "/images/hero/newarrivals/sleevsshirt.png",
   },
 ];
+const buttonVariant = {
+  hover: {
+    scale: 1.05,
+    transition: {
+      duration: 0.5,
+      repeat: Infinity,
+      repeatType: "reverse",
+    },
+  },
+};
 
 const NewArrivals = () => {
   return (
     <section className="py-12 md:py-20 border-b border-gray-100">
       <div className="container mx-auto px-4 lg:px-10">
-        <h2 className="text-3xl md:text-5xl font-black text-center mb-10 md:mb-14 uppercase tracking-tighter">
+        <motion.h2
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+          className="text-3xl md:text-5xl font-black text-center mb-10 md:mb-14 uppercase tracking-tighter"
+        >
           NEW ARRIVALS
-        </h2>
+        </motion.h2>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
+        >
           {products.map((product, index) => (
             <div
               key={product.id}
@@ -98,14 +122,22 @@ const NewArrivals = () => {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View All Button */}
         <div className="mt-8 md:mt-16 flex justify-center">
           <Link href="/newarrivals">
-            <button className="sm:w-auto border border-gray-300 bg-transparent text-black py-3 md:py-4 px-8 rounded-full font-semibold text-sm sm:text-base hover:bg-black hover:text-white transition-all duration-300 active:scale-95">
+            <motion.button
+              variants={buttonVariant}
+              whileHover="hover"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+              className="sm:w-auto border border-gray-300 bg-transparent text-black py-3 md:py-4 px-8 rounded-full font-semibold text-sm sm:text-base hover:bg-black hover:text-white cursor-pointer"
+            >
               View All
-            </button>
+            </motion.button>
           </Link>
         </div>
       </div>
