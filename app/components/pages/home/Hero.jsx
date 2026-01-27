@@ -13,8 +13,14 @@ const buttonVariant = {
     },
   },
 };
-const phrases = ["STYLE", "VIBE", "LOOK", "TREND", "CLASS", "ELITE", "TASTE"];
-
+const phrases = [
+  "YOUR STYLE",
+  "YOUR VIBE",
+  "YOUR LOOK",
+  "YOUR TREND",
+  "YOUR CLASS",
+  "YOUR TASTE",
+];
 const Hero = () => {
   const [index, setIndex] = useState(0);
 
@@ -22,7 +28,7 @@ const Hero = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % phrases.length);
-    }, 3000); // Change phrase every 3 seconds
+    }, 4000); // Change phrase every 3 seconds
     return () => clearInterval(timer);
   }, []);
 
@@ -32,7 +38,7 @@ const Hero = () => {
         {/* Left Content */}
         <div className="w-full md:w-1/2 py-1 sm:py-1.5 md:py-2 lg:py-3 mb-12 sm:mb-14 md:mb-16 lg:mb-18 flex flex-col items-start">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black leading-tight mb-4 sm:mb-5 md:mb-6 lg:mb-6 tracking-tighter text-black">
-            FIND CLOTHES THAT MATCH YOUR {" "}
+            FIND CLOTHES THAT MATCH{" "}
             <span className="inline-flex ml-2 min-h-[1em]">
               <AnimatePresence mode="wait">
                 <motion.span
@@ -44,23 +50,22 @@ const Hero = () => {
                 >
                   {phrases[index].split("").map((char, charIndex) => (
                     <motion.span
-                      key={`${index}-${charIndex}`} 
+                      key={`${index}-${charIndex}`}
                       variants={{
                         hidden: { opacity: 0 },
                         visible: {
                           opacity: 1,
-                          transition: { delay: charIndex * 0.12 }, // Typing speed
+                          transition: { delay: charIndex * 0.18 },
                         },
                         exit: {
                           opacity: 0,
                           transition: {
-                            // Backspace speed: calculates delay from right to left
-                            delay: (phrases[index].length - charIndex) * 0.12,
+                            delay: (phrases[index].length - charIndex) * 0.18,
                           },
                         },
                       }}
                     >
-                      {char}
+                      {char === " " ? "\u00A0" : char}
                     </motion.span>
                   ))}
                   {/* Optional: Blinking Cursor */}

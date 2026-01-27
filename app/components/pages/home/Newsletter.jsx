@@ -10,7 +10,7 @@ const Newsletter = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
-      className="px-4 md:px-10 relative z-30 -mb-[90px] md:-mb-[100px]"
+      className="px-4 md:px-10 relative z-30 -mb-[90px] md:-mb-[100px] overflow-hidden"
     >
       <div className="container mx-auto px-4 lg:px-10">
         <div className="bg-black rounded-[20px] py-9 px-6 md:py-11 md:px-16 flex flex-col lg:flex-row items-center justify-between gap-8">

@@ -8,7 +8,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F0F0F0] text-gray-600 pt-12">
+    <footer className="bg-[#F0F0F0] text-gray-600 pt-12 overflow-hidden">
       {/* Top section */}
       <div className="container mx-auto px-4 lg:px-10 py-22">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">

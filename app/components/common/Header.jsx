@@ -18,7 +18,7 @@ const Header = () => {
   const { newItemsCount, clearNotificationBadge } = useCart();
 
   return (
-    <header className="w-full bg-white sticky top-0 z-50">
+    <header className="w-full bg-white sticky top-0 z-50 overflow-hidden">
       {/* Main Container */}
       <div className="container mx-auto px-4 lg:px-10 flex items-center justify-between h-16 md:h-20 gap-4">
         {/* Left Section: Mobile Menu & Logo */}

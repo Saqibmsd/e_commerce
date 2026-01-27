@@ -25,7 +25,7 @@ const Brands = () => {
       x: [currentX.current, "-33.33%"],
       transition: {
         ease: "linear",
-        duration: 18,
+        duration: 20,
         repeat: Infinity,
       },
     });

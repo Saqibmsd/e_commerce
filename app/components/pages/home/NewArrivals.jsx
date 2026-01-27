@@ -51,7 +51,7 @@ const buttonVariant = {
 
 const NewArrivals = () => {
   return (
-    <section className="py-12 md:py-20 border-b border-gray-100">
+    <section className="py-12 md:py-20 border-b border-gray-100 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-10">
         <motion.h2
           initial={{ opacity: 0, y: -50 }}
