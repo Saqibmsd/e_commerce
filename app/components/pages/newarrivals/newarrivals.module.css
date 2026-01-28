@@ -11,7 +11,7 @@
 
 /* Header Section */
 .headerContainer {
-    @apply mb-12 ;
+    @apply mb-12;
 }
 
 .newArrivalBadge {
@@ -76,6 +76,10 @@
 
 .discountBadge {
     @apply absolute top-2 left-2 md:top-3 md:left-3 bg-red-500 text-white text-[8px] md:text-xs font-bold px-2 py-1 rounded;
+}
+
+.discountMirror {
+    @apply absolute top-0 left-[-80%] h-full w-[60%] bg-gradient-to-r from-transparent via-white/60 to-transparent rotate-12;
 }
 
 /* Details */

@@ -140,8 +140,8 @@ const Header = () => {
               {[
                 { name: "Home", href: "/" },
                 { name: "Casual", href: "/casual" },
-                { name: "Top Selling", href: "/topselling" },
                 { name: "New Arrivals", href: "/newarrivals" },
+                { name: "Top Selling", href: "/topselling" },
               ].map((item, index) => (
                 <a
                   key={item.name}

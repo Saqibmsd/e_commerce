@@ -105,7 +105,7 @@
 }
 
 .paginationWrapper {
-    @apply flex justify-between items-center mt-10 transition-all;
+    @apply flex justify-center gap-40 items-center mt-10 transition-all;
 }
 
 .pageBtn {
