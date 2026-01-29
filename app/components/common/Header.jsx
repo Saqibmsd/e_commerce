@@ -90,8 +90,13 @@ const Header = () => {
           </button>
 
           <Link href="/cart" onClick={() => clearNotificationBadge()}>
-            <button className="text-black hover:opacity-70 cursor-pointer mt-2 relative">
+            <button
+              className={`mt-2 relative transition-colors
+      ${pathname === "/cart" ? "text-black" : "text-gray-500 hover:text-black"}
+    `}
+            >
               <ShoppingCart size={22} />
+
               {newItemsCount > 0 && (
                 <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                   {newItemsCount}
@@ -101,7 +106,15 @@ const Header = () => {
           </Link>
 
           <Link href="/profile">
-            <button className="text-black hover:opacity-70 cursor-pointer mt-2 relative">
+            <button
+              className={`mt-2 relative transition-colors
+      ${
+        pathname === "/profile"
+          ? "text-black"
+          : "text-gray-500 hover:text-black"
+      }
+    `}
+            >
               <CircleUserRound size={22} />
             </button>
           </Link>

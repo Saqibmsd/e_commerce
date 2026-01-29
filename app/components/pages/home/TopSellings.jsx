@@ -115,9 +115,30 @@ const TopSelling = () => {
                     <span className="text-lg md:text-2xl font-bold text-black/30 line-through">
                       ${product.oldPrice}
                     </span>
-                    <span className="bg-[#FF3333]/10 text-[#FF3333] text-[10px] md:text-xs font-medium px-2 py-0.5 rounded-full">
+                    <motion.span
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{
+                        duration: 0.8,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className=" bg-red-100 text-red-500 text-[10px] px-2 py-0.5 rounded-full relative overflow-hidden"
+                    >
                       {product.discount}
-                    </span>
+
+                      {/* Mirror / flash sweep */}
+                      <motion.span
+                        className="absolute top-0 left-[-80%] h-full w-[60%] bg-gradient-to-r from-transparent via-white/60 to-transparent rotate-12"
+                        animate={{ left: ["-80%", "130%"] }}
+                        transition={{
+                          duration: 1.1,
+                          repeat: Infinity,
+                          repeatDelay: 2,
+                          ease: "easeInOut",
+                        }}
+                      />
+                    </motion.span>
                   </>
                 )}
               </div>

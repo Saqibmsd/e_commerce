@@ -49,7 +49,7 @@ const ProfileDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-12">
+    <div className="min-h-screen bg-gray-50 pb-12 overflow-hidden">
       <motion.header
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ const ProfileDashboard = () => {
         transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
         className="bg-white border-b border-gray-200 shadow-sm px-4 lg:px-10 py-8 md:py-10"
       >
-        <div className="mx-auto container flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="mx-auto container flex flex-col md:flex-row justify-between items-center gap-6 px-4 lg:px-10">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-center md:text-left">
             <div className="w-20 h-20 md:w-24 md:h-24 bg-black text-white rounded-full flex items-center justify-center text-2xl md:text-3xl font-bold shadow-lg shrink-0">
               {profileData.name.charAt(0)}
