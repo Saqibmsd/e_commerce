@@ -122,10 +122,13 @@ export default function CasualPage() {
   };
 
   const SidebarContent = () => (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 overflow-hidden">
       <div className={styles.sidebarTitleRow}>
         <h3 className="text-xl font-bold">Filters</h3>
-        <SlidersHorizontal size={20} className="hidden lg:block opacity-40" />
+        <SlidersHorizontal
+          size={20}
+          className="hidden lg:block opacity-40 overflow-hidden"
+        />
         <button
           onClick={() => setMobileFiltersOpen(false)}
           className="lg:hidden"
@@ -308,13 +311,12 @@ export default function CasualPage() {
             <SidebarContent />
           </motion.aside>
 
-          <main className="flex-1 flex flex-col">
+          <main className="flex-1 flex flex-col overflow-hidden">
             <div className="flex justify-between items-center mb-8">
               <motion.h2
                 initial={{ opacity: 0, y: -50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="text-2xl md:text-3xl font-bold"
               >
                 Casual
@@ -334,12 +336,15 @@ export default function CasualPage() {
                   )}{" "}
                   of {filteredProducts.length} Products
                 </motion.span>
-                <button
+                <motion.button
+                  initial={{ opacity: 0, y: -50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => setMobileFiltersOpen(true)}
                   className="lg:hidden w-10 h-10 bg-[#F0F0F0] rounded-full flex items-center justify-center"
                 >
                   <Filter size={20} />
-                </button>
+                </motion.button>
               </div>
             </div>
 
@@ -391,9 +396,30 @@ export default function CasualPage() {
                           </span>
                         )}
                         {p.discount && (
-                          <span className={styles.discountBadge}>
+                          <motion.span
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{
+                              duration: 0.8,
+                              ease: [0.16, 1, 0.3, 1],
+                            }}
+                            className={`${styles.discountBadge} relative overflow-hidden`}
+                          >
                             {p.discount}
-                          </span>
+
+                            {/* Mirror / flash sweep */}
+                            <motion.span
+                              className={`${styles.discountMirror}`}
+                              animate={{ left: ["-80%", "130%"] }}
+                              transition={{
+                                duration: 1.1,
+                                repeat: Infinity,
+                                repeatDelay: 2,
+                                ease: "easeInOut",
+                              }}
+                            />
+                          </motion.span>
                         )}
                       </div>
                     </Link>
@@ -427,7 +453,7 @@ export default function CasualPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
-                className="hidden md:flex gap-2"
+                className=" md:flex"
               >
                 {generatePageNumbers().map((num, i) => (
                   <button
@@ -443,10 +469,10 @@ export default function CasualPage() {
                 ))}
               </motion.div>
               <motion.button
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() =>
                   setCurrentPage((prev) => Math.min(prev + 1, totalPages))
                 }

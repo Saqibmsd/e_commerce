@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from "next/navigation";
 
 import React, { useState } from "react";
 import { ArrowRight, Instagram, Twitter, Facebook } from "lucide-react";
@@ -16,6 +17,7 @@ import Link from "next/link";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { newItemsCount, clearNotificationBadge } = useCart();
+  const pathname = usePathname();
 
   return (
     <header className="w-full bg-white sticky top-0 z-50 overflow-hidden">
@@ -37,39 +39,40 @@ const Header = () => {
             SHOP.CO
           </a>
         </div>
-
         {/* Navigation Links - Desktop */}
         <nav className="hidden md:flex items-center gap-6">
-          {/* <div className="flex items-center gap-1 cursor-pointer hover:text-gray-600 transition-colors">
-            <span>Shop</span>
-            <ChevronDown size={16} />
-          </div> */}
-          <a
-            href="/"
-            className="hover:text-gray-600 transition-colors whitespace-nowrap"
-          >
-            Home
-          </a>
-          <a
-            href="/casual"
-            className="hover:text-gray-600 transition-colors whitespace-nowrap"
-          >
-            Casual
-          </a>
-          <a
-            href="/newarrivals"
-            className="hover:text-gray-600 transition-colors whitespace-nowrap"
-          >
-            New Arrivals
-          </a>
-          <a
-            href="/topselling"
-            className="hover:text-gray-600 transition-colors whitespace-nowrap"
-          >
-            Top Selling
-          </a>
-        </nav>
+          {[
+            { name: "Home", href: "/" },
+            { name: "Casual", href: "/casual" },
+            { name: "New Arrivals", href: "/newarrivals" },
+            { name: "Top Selling", href: "/topselling" },
+          ].map((link) => {
+            const isActive = pathname === link.href;
 
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`relative pb-1 font-medium whitespace-nowrap transition-colors
+          ${isActive ? "text-black" : "text-gray-500 hover:text-black"}
+        `}
+              >
+                {link.name}
+
+                {/* Underline */}
+                <span
+                  className={`absolute left-0 -bottom-0.5 h-[2px] w-full rounded-full transition-all duration-300
+            ${
+              isActive
+                ? "bg-[rgb(35,94,30)] scale-x-100"
+                : "bg-[rgb(26,255,0)] scale-x-0 group-hover:scale-x-100"
+            }
+          `}
+                />
+              </a>
+            );
+          })}
+        </nav>
         {/* Search Bar - Desktop */}
         <div className="hidden md:flex flex-1 items-center bg-[#f0f0f0] rounded-full px-4 py-2.5 max-w-[600px]">
           <Search className="text-gray-500 mr-2" size={20} />
@@ -79,7 +82,6 @@ const Header = () => {
             className="bg-transparent w-full outline-none text-sm placeholder:text-gray-500"
           />
         </div>
-
         {/* Right Icons */}
         <div className="flex items-center gap-3 md:gap-4">
           {/* Search Icon - Mobile Only */}

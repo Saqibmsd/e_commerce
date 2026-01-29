@@ -2,7 +2,7 @@
 @reference "../../../../app/globals.css";
 
 .pageWrapper {
-    @apply min-h-screen bg-white;
+    @apply min-h-screen bg-white overflow-hidden;
 }
 
 .maxContainer {
@@ -20,7 +20,7 @@
 }
 
 .mobileDrawerOverlay {
-    @apply fixed inset-0 bg-black/40 z-[100] transition-opacity lg:hidden;
+    @apply fixed inset-0 bg-black/40 z-[100] transition-opacity lg:hidden overflow-hidden;
 }
 
 .mobileDrawerContent {
@@ -99,13 +99,18 @@
     @apply bg-red-100 text-red-500 text-[10px] px-2 py-0.5 rounded-full;
 }
 
+.discountMirror {
+    @apply absolute top-0 left-[-80%] h-full w-[60%] bg-gradient-to-r from-transparent via-white/60 to-transparent rotate-12;
+}
+
+
 /* Buttons & Pagination */
 .actionButton {
     @apply w-full bg-black text-white py-4 rounded-full font-medium mt-2 hover:bg-black/90 active:scale-[0.98] transition-all cursor-pointer;
 }
 
 .paginationWrapper {
-    @apply flex justify-center gap-40 items-center mt-10 transition-all;
+    @apply flex justify-center gap-4 mt-10 transition-all;
 }
 
 .pageBtn {
