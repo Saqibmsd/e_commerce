@@ -22,7 +22,7 @@ export default function NewArrivalsPage() {
   }
 
   return (
-    <div className={`${styles.pageWrapper} container mx-auto px-4 lg:px-10`}>
+    <div className={styles.pageWrapper}>
       <header className={styles.headerContainer}>
         <div className={styles.maxContainer}>
           <motion.div

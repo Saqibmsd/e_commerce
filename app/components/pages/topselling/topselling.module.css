@@ -6,7 +6,8 @@
 }
 
 .maxContainer {
-    @apply max-w-[1240px] mx-auto;
+    /* 'container' is a special class; using max-width and margin instead */
+    @apply container mx-auto px-4 lg:px-10 py-6;
 }
 
 /* 1. Header Section */

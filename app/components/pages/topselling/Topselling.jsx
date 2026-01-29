@@ -23,7 +23,7 @@ export default function TopSellingPage() {
   }
 
   return (
-    <div className={`${styles.pageWrapper} container mx-auto px-4 lg:px-10`}>
+    <div className={styles.pageWrapper}>
       {/* 1. Hero / Header Section */}
       <div className={styles.heroSection}>
         <div className={styles.maxContainer}>
